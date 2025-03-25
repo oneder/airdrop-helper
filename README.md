@@ -68,7 +68,7 @@ If you haven’t already cloned the repository, run:
 
 ```
 git clone https://github.com/oneder/airdrop-helper
-cd YOUR-REPO-NAME
+cd airdrop-helper
 ```
 
 ### **3. Set Up a Virtual Environment**
