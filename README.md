@@ -67,9 +67,8 @@ If you don’t have Python installed, [download it here](https://www.python.org/
 If you haven’t already cloned the repository, run:
 
 ```
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git clone https://github.com/oneder/airdrop-helper
 cd YOUR-REPO-NAME
-
 ```
 
 ### **3. Set Up a Virtual Environment**
