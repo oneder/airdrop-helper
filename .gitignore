@@ -1,0 +1,42 @@
+# Virtual environment files
+venv/
+.pyenv/
+pyvenv.cfg
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore all files in Input and Output folders
+Snapshots/*
+Output/*
+
+# Allow the folders themselves
+!Snapshots/
+!Output/
+
+# Allow only specific sample CSV files
+!Snapshots/sample_*.csv
+!Output/airdrop_sample_*.csv
+
+# Logs and debug files
+logs/
+*.log
+debug.log
+
+# Editor-specific files
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
