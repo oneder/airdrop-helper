@@ -1,6 +1,8 @@
 # Virtual environment files
 venv/
 Lib/
+Include/
+Scripts/
 .pyenv/
 pyvenv.cfg
 
