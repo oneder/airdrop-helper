@@ -25,10 +25,10 @@ if not os.path.exists(holder_csv_path):
 token_type = input("Enter the token type (e.g., 'erc20'): ").strip()
 token_address = input("Enter the token contract address: ").strip()
 base_airdrop_amount = int(input("Enter the base airdrop amount: ").strip())
-airdrop_type = input("Is the airdrop amount per NFT (Y/N)? ").strip().lower()
+airdrop_type = input("Is the airdrop amount per asset held (Y/N)? ").strip().lower()
 
-# Determine if airdrop is per NFT or per Holder
-is_per_nft = airdrop_type == "y"
+# Determine if airdrop is per asset held or per Holder
+is_per_asset = airdrop_type == "y"
 
 # Process snapshot data
 airdrop_data = []
@@ -41,7 +41,7 @@ with open(holder_csv_path, mode="r") as infile:
     for row in reader:
         receiver = row["address"]
         quantity = int(row["quantity"])
-        amount = base_airdrop_amount * quantity if is_per_nft else base_airdrop_amount # Calculate airdrop amount
+        amount = base_airdrop_amount * quantity if is_per_asset else base_airdrop_amount # Calculate airdrop amount
         airdrop_data.append([token_type, token_address, receiver, amount])
         
         total_amount_to_airdrop += amount

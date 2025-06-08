@@ -1,10 +1,10 @@
 # Airdrop Helper
 
-This program can be used to streamline the process of generating token airdrop data needed for executing airdrops to asset holders through SafeWallet's CSV Airdrop app. The user will provide a CSV file containing a snapshot of asset holders' data (holder addresses and quantity of the asset held) into the configured 'Snapshots' folder.
+This program can be used to streamline the process of generating token airdrop data needed for executing airdrops to qualifying asset holders through SafeWallet's CSV Airdrop app. The user will provide a CSV file containing a snapshot of asset holders' data (holder addresses and quantity of the qualifying asset held) into the configured 'Snapshots' folder.
 
-When running the program, it will prompt the user for the required information needed to output a valid asset tranfer CSV file, and then generate the file into the configured 'Output' folder. Once the airdrop CSV file has been created, the user can then import that into SafeWallet's CSV Airdrop app and submit the airdrop transaction.
+When running the program, it will prompt the user for the required information needed to output a valid asset tranfer CSV file into the configured 'Output' folder. Once the airdrop CSV file has been created, the user can then import that into SafeWallet's CSV Airdrop app and submit the airdrop transaction.
 
-Currently, this program supports generating data for airdropping a single asset to a list of holders, holding a valid, qualifying asset.
+Currently, this program supports generating data for airdropping a single asset to a list of holders holding a valid, qualifying asset.
 
 # CSV Formatting
 
@@ -17,7 +17,14 @@ A given airdrop cares about two CSV files:
 
 This is the "input" data. This file contains the addresses holding an asset that qualifies for a given airdrop, and the respective quantity of the asset the wallets are holding.
 
-Use a tool such as SignorCrypto's [NFT Snapshot Tool](https://www.signorcrypto.com/toolkit/snapshot) to export a CSV of holder address in a valid format - just provide the network and contract address for the asset that qualifies for the airdrop.
+Provided is a utility script that can be used to create a Snapshot CSV for token holders for you - just follow the prompts and let it run:
+```
+erc20_token_holders.py
+```
+
+This script will output a CSV file in a valid format to the configured *Snapshots* folder.
+
+Alternatively, for qualifying NFT assets, use a tool such as SignorCrypto's [NFT Snapshot Tool](https://www.signorcrypto.com/toolkit/snapshot) to export a CSV of holder address in a valid format - just provide the network and contract address for the asset that qualifies for the airdrop.
 
 Format of a snapshot CSV file:
 ```
@@ -103,19 +110,28 @@ Create a .env file in the root project directory and add the required configurat
 ```
 SNAPSHOTS_FOLDER= # path to folder containing snapshot .csv files
 OUTPUT_FOLDER= # path for where to generate the SafeWallet airdrop .csv files
+
+INFURA_API_KEY= # infura API key
 ```
 
 ### **6. Add Snapshot CSV File to Snapshots Folder**
 
 Add a CSV file containing the holder data to the *Snapshots* folder (see **`CSV Formating`** section above).
 
-### **7. Run the Program**
+To create manually, run the Python script:
+```
+python erc20_token_holders.py
+```
+
+Verify an `erc20_snapshot_*.csv` file has been created in the configured *Snapshots* folder.
+
+### **7. Generate Airdrop CSV**
 
 Run the Python script:
 ```
 python generate_from_snapshot.py
 ```
 
-Once the program is running, the user will provide the name of a snapshot CSV of qualifying asset holders, type of ERC token holders will receive from the airdrop, the token address of the asset being airdropped, the base amount of tokens for the airdrop, and whether or not the airdrop amount if *per NFT* or *per holder*.
+Once the program is running, the user will provide the name of a snapshot CSV of qualifying asset holders, type of ERC token holders will receive from the airdrop, the token address of the asset being airdropped, the base amount of tokens for the airdrop, and whether or not the airdrop amount is *per asset held* or *per holder*.
 
 The program will then output an airdrop CSV file to the *Output* folder, which can be imported into SafeWallet's CSV Airdrop app and used to execute the airdrop.
