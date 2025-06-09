@@ -43,7 +43,7 @@ raw_token_contract = input("Enter the token contract of the token holders need t
 token_contract = Web3.to_checksum_address(raw_token_contract)
 print(f"\tToken Contract: {token_contract}")
 
-minimum_amount = int(input("Enter the minimum amount required: ").strip())
+minimum_amount = float(input("Enter the minimum amount required: ").strip())
 
 def fetch_token_transfers(token_contract, from_block, to_block, step=1000):
     print(f"Fetching all token transfer recipients for '{token_contract}' starting from block 0...")

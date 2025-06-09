@@ -24,7 +24,7 @@ if not os.path.exists(holder_csv_path):
 
 token_type = input("Enter the token type (e.g., 'erc20'): ").strip()
 token_address = input("Enter the token contract address: ").strip()
-base_airdrop_amount = int(input("Enter the base airdrop amount: ").strip())
+base_airdrop_amount = float(input("Enter the base airdrop amount: ").strip())
 airdrop_type = input("Is the airdrop amount per asset held (Y/N)? ").strip().lower()
 
 # Determine if airdrop is per asset held or per Holder
